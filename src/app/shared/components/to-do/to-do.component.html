@@ -1,0 +1,58 @@
+<section class="to-do-container">
+  <div class="to-do-container_absolute">
+    <div class="to-do-container_title">
+      <h1 class="to-do-container_title-text">To do list!</h1>
+    </div>
+
+    <form #f="ngForm" [formGroup]="listForm" (ngSubmit)="onSubmit()">
+      <div class="to-do-container_inputs">
+        <div class="to-do-container_inputs-element">
+          <label class="to-do-container_inputs-element-label" for="title"
+            >Task title</label
+          >
+          <input
+            [ngClass]="{
+              invalid:
+                listForm.get('title')!.hasError('required') &&
+                f.submitted &&
+                submit === false
+            }"
+            id="title"
+            formControlName="title"
+            type="text"
+            class="to-do-container_inputs-element-input"
+          />
+          <div class="button-container">
+            <button class="button" type="submit">
+              <span class="material-symbols-outlined icon"> add </span>
+            </button>
+          </div>
+          <p
+            *ngIf="
+              listForm.get('title')!.hasError('required') &&
+              f.submitted &&
+              submit === false
+            "
+            class="error"
+          >
+            Please enter Task Title
+          </p>
+        </div>
+        <div class="to-do-container_inputs-element">
+          <label for="" class="to-do-container_inputs-element-descLabel"
+            >Description*</label
+          >
+          <textarea
+            formControlName="task"
+            name=""
+            id=""
+            cols="30"
+            rows="10"
+            class="to-do-container_inputs-element-textarea"
+          ></textarea>
+        </div>
+      </div>
+    </form>
+    <app-view-data *ngIf="arrayList.length != 0" [data]="arrayList"></app-view-data>
+  </div>
+</section>
