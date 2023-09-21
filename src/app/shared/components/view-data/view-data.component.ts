@@ -7,7 +7,6 @@ import { Component, Input } from '@angular/core';
 })
 export class ViewDataComponent {
   @Input() data: any;
-  checked: boolean = false;
 
   onClick(num: number) {
     let elem = document.querySelector(`.nume${num}`);
@@ -26,6 +25,11 @@ export class ViewDataComponent {
   }
 
   onDelete(i: number) {
-    this.data.splice(i, 1);
+    document
+      .getElementsByClassName(`view-data-container`)[i]
+      ?.classList.add('showOut');
+    setTimeout(() => {
+      this.data.splice(i, 1);
+    }, 500);
   }
 }

@@ -1,8 +1,9 @@
 .view-data {
-  height: 500px;
+  height: 550px;
   overflow-y: auto;
 }
 .view-data-container {
+  max-width: calc(600px - 17px);
   background-color: #87898c;
   border: 1px solid black;
   transition: 0.5s;
@@ -62,29 +63,50 @@
   }
 }
 
-@media (max-width: 650px) {
-  .view-data-container {
-    width: 343px;
-    margin: auto auto;
-    margin-bottom: 10px;
-    &_wrapper {
-      flex-direction: column;
-    }
-    &_element {
-      margin-left: 16px;
-      margin-right: 16px;
-      max-width: 200px;
-      &-title {
-        max-width: 200px;
-      }
-      &-description {
-        max-width: 200px;
-      }
-    }
+.checked {
+  color: #666;
+  opacity: 0.5;
+  text-decoration: line-through;
+  transition: 0.5s;
+}
+
+.notChecked {
+  transition: 0.5s;
+  opacity: 1;
+  text-decoration: none;
+  color: #000;
+}
+
+.showIn {
+  visibility: visible;
+  animation-name: showInn;
+  animation-duration: 0.5s;
+}
+
+.showOut {
+  animation-name: showOutt;
+  animation-duration: 0.5;
+  visibility: hidden;
+}
+
+@keyframes showInn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 
-//
+@keyframes showOutt {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 .checkbox-wrapper-12 {
   position: relative;
 }
@@ -217,16 +239,24 @@
   }
 }
 
-.checked {
-  color: #666;
-  opacity: 0.5;
-  text-decoration: line-through;
-  transition: 0.5s;
-}
-
-.notChecked {
-  transition: 0.5s;
-  opacity: 1;
-  text-decoration: none;
-  color: #000;
+@media (max-width: 650px) {
+  .view-data-container {
+    width: 343px;
+    margin: auto auto;
+    margin-bottom: 10px;
+    &_wrapper {
+      flex-direction: column;
+    }
+    &_element {
+      margin-left: 16px;
+      margin-right: 16px;
+      max-width: 200px;
+      &-title {
+        max-width: 200px;
+      }
+      &-description {
+        max-width: 200px;
+      }
+    }
+  }
 }
